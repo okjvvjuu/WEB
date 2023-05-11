@@ -1,0 +1,124 @@
+/*GENERALES*/
+
+html {
+    --trans-selected-color: #F99F0969;
+    --selected-color: #F99F09;
+    --trans-gray: #99999969;
+    --trans-light-gray: #DDDDDD69;
+    --trans-white: #fff3;
+    --trans-green: #09BB0969;
+    --green: #1a1;
+    --terracota: #d2624b;
+    --light-terracota: #e98860;
+    --trans-terracota: #d2624bd9;
+
+    --h2-height: 1.5em;
+}
+
+*{
+    box-sizing: border-box;
+    font-family: 'Maitree', serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+#back {
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: -1;
+}
+
+#back video {
+    min-height: 100vh;
+    min-width: 100%;
+}
+
+.button {
+    background-color: var(--green);
+    border: 2px solid var(--trans-gray);
+    border-radius: .25em;
+    font-weight: 600;
+    margin: 0 auto;
+    padding: .5em;
+    width: fit-content;
+}
+
+footer * {
+    margin: 2em 1em;
+}
+
+header {
+    border-radius: 1em 1em 0 0;
+    display: flex;
+    grid-area: header;
+    overflow: hidden;
+}
+
+h1 {
+    background: linear-gradient(#ddd, var(--selected-color));
+    color: green;
+    text-shadow: 0 0 2px white;
+    font-family: 'Lobster Two', cursive;
+    font-size: 5em;
+    margin: 0;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    text-align: center;
+    width: 100%;
+}
+
+h1 span {
+    color: darkgreen;
+    font-size: .75em;
+    white-space: pre;
+}
+
+h2 {
+    border-bottom: 1px solid black;
+    height: var(--h2-height);
+    letter-spacing: 1px;
+    text-align: center;
+    width: 100%;
+}
+
+.logo {
+    align-self: end;
+    height: 1em;
+    margin: 0 5%;
+}
+
+.main {
+    background: var(--light-terracota);
+    -webkit-backdrop-filter: blur(100px);
+    backdrop-filter: blur(100px);
+    /*border: .2em solid var(--terracota);*/
+    border-radius: 1em;
+    /*-webkit-clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 3em, 69em 0);
+    clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 10pt, 95% 0);*/
+    display: grid;
+    grid-template-columns: 3fr 9fr;
+    grid-template-areas:
+        "header     header"
+        "nav        nav"
+        "aside      main"
+        "footer     footer"
+        ;
+    margin: 2.5% 20%;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    grid-area: main;
+    overflow: hidden;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}

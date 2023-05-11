@@ -1,0 +1,37 @@
+table {
+    background-color: lightgray;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.table {
+    margin: 1em auto;
+    overflow-x: scroll;
+    width: 98%;
+}
+
+tbody td {
+    border-right: none;
+}
+
+tbody td:last-child {
+    border-left: none;
+    border-right: 1px solid black;
+    text-align: right;
+    width: fit-content;
+}
+
+td {
+    border: 1px solid black;
+    padding: .5em;
+}
+
+td .button {
+    margin: 0;
+    padding: .1em .5em;
+}
+
+thead td {
+    background-color: gray;
+    border-bottom-width:3px;
+}

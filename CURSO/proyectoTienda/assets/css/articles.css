@@ -1,0 +1,67 @@
+
+.articles input[type="submit"] {
+    background-color: var(--trans-light-gray);
+    border: transparent;
+    cursor: pointer;
+    font-weight: 600;
+    padding: 1px;
+    outline: none;
+    transition: background-color .2s ease-in-out;
+    transition: border-color .2s ease-in-out;
+}
+
+.articles input[type="submit"]:hover {
+    background-color: white;
+    border-bottom: 1px solid black;
+    padding-bottom: 0;
+    transform: scale(1.05);
+}
+
+figure {
+    display: flex;
+    flex-direction: column;
+}
+
+figcaption * {
+    text-align: center;
+    width: 100%;
+}
+
+figure img {
+    margin: 5%;
+    width: 90%;
+}
+
+footer {
+    grid-area: footer;
+    text-align: center;
+    width: 100%;
+}
+
+main .articles {
+    align-items: start;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.product {
+    background: var(--trans-white);
+    border: 1px solid var(--trans-white);
+    border-radius: .2em;
+    margin: 1em;
+    margin-bottom: 1em;
+    transition: all .15s ease-in-out;
+    width: 10em;
+}
+
+.product figure {
+    margin: 2.5%;
+    transition: all .15s ease-in-out;
+}
+
+.product:hover {
+    background-color: rgba(240,240,240,.5);
+    cursor: pointer;
+    transform: scale(1.05);
+}

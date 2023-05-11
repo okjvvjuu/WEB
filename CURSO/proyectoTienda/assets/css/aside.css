@@ -1,0 +1,43 @@
+
+aside {
+    background-color: var(--trans-green);
+    grid-area: aside;
+    height: fit-content;
+    margin: calc(var(--h2-height) * 2.8) 0 1em 0;
+}
+
+aside > * {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+}
+
+aside li {
+    margin: .25em 0;
+    width: 100%;
+}
+
+aside li:first-child {
+    text-align: center;
+}
+
+aside img {
+    background-color: white;
+    -webkit-clip-path: circle(50%);
+    clip-path: circle(50%);
+    height: 10em;
+    margin-bottom: 1em;
+    width: 10em;
+}
+
+.aside-button {
+    background-color: green;
+    border: .1em solid darkgreen;
+    border-left: .2em solid white;
+    border-radius: 0 1em 1em 0;
+    color: white;
+    display: block;
+    font-weight: 600;
+    padding: .1em 0 .1em .66em;
+    width: 95%;
+}

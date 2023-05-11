@@ -1,0 +1,14 @@
+{
+    "name": "vendor/prueba-imagenes",
+    "description": "Description of project prueba-imagenes.",
+    "authors": [
+        {
+            "name": "okjvvjuu",
+            "email": "joluba2002@gmail.com"
+        }
+    ],
+    "require": {
+        "masterexploder/phpthumb": "dev-master",
+        "firephp/firephp-core": "dev-master"
+    }
+}

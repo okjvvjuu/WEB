@@ -1,0 +1,17 @@
+.error {
+    background-color: #f00e;
+    color: white;
+    padding: 1em;
+}
+
+.error .closebtn {
+    margin-right: 1em
+}
+
+.error .closebtn:hover {
+    cursor: pointer;
+}
+
+.error p {
+    margin-bottom: .25em;
+}

@@ -1,0 +1,23 @@
+body {
+    align-items: center;
+    background: linear-gradient(#ffffff 50%, rgba(255, 255, 255, 0) 0) 0 0,
+        radial-gradient(circle closest-side, #FFFFFF 53%, rgba(255, 255, 255, 0) 0) 0 0,
+        radial-gradient(circle closest-side, #FFFFFF 50%, rgba(255, 255, 255, 0) 0) 55px 0 #48B;
+    background-size: 110px 200px;
+    background-repeat: repeat-x;
+    display: grid;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+a {
+    border: 1px solid black;
+    border-radius: .5em;
+    margin: 1em 5%;
+    max-width: 1280px;
+    width: 90%;
+}
+
+img {
+    width: 100%;
+}

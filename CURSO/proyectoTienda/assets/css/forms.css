@@ -1,0 +1,92 @@
+
+:not(figcaption) > form {
+    background-color: var(--trans-green);
+    box-shadow: 0 0 .5em black;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    padding: 1.5em 1em;
+    overflow: hidden;
+    width: 90%;
+}
+
+form > * {
+    margin-left: 0;
+    padding-left: .25em;
+    width: 100%;
+}
+
+form input:not(input[type='submit']){
+    background: none;
+    border: 0;
+    border-bottom: .1em solid darkslategray;
+    margin-bottom: 1.2em;
+    position: relative;
+    transition: all .3s ease-in-out;
+}
+
+form h3 {
+    border-bottom: .1em solid black;
+    margin-top: 0;
+}
+
+input {
+    background: none;
+    color: transparent;
+    outline: none;
+    width: 100%;
+    z-index: 1;
+}
+
+.input-box {
+    margin-top: 1em;
+    position: relative;
+}
+
+.inline-input-box {
+    align-content: center;
+    display: flex;
+}
+
+.inline-input-box * {
+    border-color: transparent;
+    margin: .25em 1em 0 0;
+    width: fit-content;
+}
+
+input[type="submit"] {
+    background-color: lightgrey;
+    border: 1px solid grey;
+    border-radius: .5em;
+    cursor: pointer;
+}
+
+input:focus ~ label,
+input:valid ~ label {
+    transform: translateY(-1.25em);
+}
+
+input:focus,
+input:valid {
+    color: black;
+}
+
+label {
+    font-weight: 600;
+    pointer-events: none;
+}
+
+.input-box label {
+    left: .5em;
+    position: absolute;
+    top: 0;
+    transition: all .3s ease-in-out;
+}
+
+textarea {
+    background: none;
+    border: 1px outset rgb(150,150,150);
+    margin: .33em 0 1em 0;
+    outline: none;
+    resize: none;
+}
