@@ -29,12 +29,17 @@ class Cart {
     }
 
     public function addProduct($product, $qty = 1) {
+        $qty = (int) $qty;
         if (!$this->containsProduct($product)) {
             $this->content[$product->getId()] = array('product' => $product, 'quantity' => $qty);
         } else {
             $this->content[$product->getId()]['quantity'] += $qty;
         }
         $this->totalCost += $product->getPrice() * $qty;
+        if ($this->content[$product->getId()]['quantity'] <= 0) {
+            $this->totalCost -= $product->getPrice() * $this->content[$product->getId()]['quantity'];
+            unset($this->content[$product->getId()]);
+        }
     }
 
     public function containsProduct($product) {

@@ -10,7 +10,7 @@
                     <figcaption>
                         <h3><?= $product->getName() ?></h3>
                         <p><?= $product->getPrice() ?>€</p>
-                        <form action="<?=baseURL?>Cart/add&id=<?=$product->getId()?>" method="POST">
+                        <form action="<?=baseURL?>Cart/addOne&id=<?=$product->getId()?>" method="POST">
                             <input type="submit" value="Comprar" />
                         </form>
                     </figcaption>

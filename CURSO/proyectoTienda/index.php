@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 
 <?php
-//error_reporting(E_ALL ^ E_WARNING ^ E_NOTICE);
+error_reporting(E_ALL ^ E_WARNING ^ E_NOTICE);
 require_once './config/parameters.php';
 require_once './config/db.php';
 require_once './helpers/Utils.php';
 require_once './models/User.php';
 require_once './models/Product.php';
 require_once './models/Cart.php';
+require_once './controllers/CartController.php';
 
 session_start();
+
+if (!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = CartController::createCart();
+}
 ?>
 
 <html>
@@ -51,7 +56,6 @@ session_start();
                     $error->index();
                 }
                 require_once './views/layout/footer.php';
-                var_dump($_SESSION['cart']);
                 ?>
             </main>
             <?php require_once './views/layout/aside.php'; ?>

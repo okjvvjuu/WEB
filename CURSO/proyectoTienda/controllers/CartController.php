@@ -4,33 +4,47 @@ require_once './models/Product.php';
 require_once './models/Cart.php';
 
 class CartController {
+    
+    public static function createCart() {
+        return new Cart();
+    }
+
+    public function index() {
+        require_once './views/cart/index.php';
+    }
 
     public function add() {
         if (!isset($_SESSION['cart'])) {
-            $_SESSION['cart'] = new Cart();
+            $this->createCart();
         }
-        if (!isset($_GET['id']) || empty($_GET['id']) || !isset($_POST['qty']) || empty($_POST['qty'])) {
+        if (!isset($_GET['id']) || empty($_GET['id'])) {
             echo defaultErrorMessage;
         } else {
             $id = $_GET['id'];
-            $qty = isset($_POST['qty']) && !empty($_POST['qty']) ? $_POST['qty'] : 1;
+            $qty = isset($_POST['qty']) ? $_POST['qty'] : 1;
+
             $product = ProductController::takeProduct($id, $qty);
             if (!$product) {
-                //WIP - mostrar mensaje de error (no quedan más artículos)
-                echo defaultErrorMessage;
+                $_SESSION['lstError']['cart_no-stock'] = 'No queda más stock (stock: ' . ProductController::getProduct($id)->getStock() . ')';
             } else {
                 $_SESSION['cart']->addProduct($product, $qty);
-                header('Location:' . baseURL . 'product/details&id=' . $_GET['id']);
             }
+            header("location:" . $_SESSION['lastPage']);
         }
     }
 
     public function remove() {
-        $_SESSION['cart'] = null;
+        $_POST['qty'] = -1;
+        $this->add();
+    }
+    
+    public function addOne() {
+        $_POST['qty'] = 1;
+        $this->add();
     }
 
     public function delete() {
-        
+        $_SESSION['cart'] = new Cart();
     }
 
 }

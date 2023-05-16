@@ -17,7 +17,7 @@
     transform: scale(1.05);
 }
 
-figure {
+.product figure {
     display: flex;
     flex-direction: column;
 }
