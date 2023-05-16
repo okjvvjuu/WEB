@@ -15,7 +15,7 @@
         <li>
             <a href="<?= baseURL ?>Cart/index"><i class="fa-solid fa-cart-shopping"></i></a><sub><?php
                 if (isset($_SESSION['cart'])) {
-                    $print = is_null($_SESSION['cart']->getContent()) ? 0:count($_SESSION['cart']->getContent());
+                    $print = is_null($_SESSION['cart']->getContent()) ? 0 : count($_SESSION['cart']->getContent());
                     echo $print;
                 }
                 ?></sub>

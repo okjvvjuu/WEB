@@ -3,7 +3,7 @@
     margin: 0;
 }
 
-.cart ~ h3, .cart ~ form {
+.cart ~ h3, .cart ~ div {
     margin: 0 1em 0 2em;
     padding: 1em 0;
     text-align: center;

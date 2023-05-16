@@ -1,5 +1,5 @@
 
-aside > form {
+main > form, aside form {
     align-self: center;
     background-color: var(--trans-green);
     box-shadow: 0 0 .5em black;
