@@ -7,7 +7,15 @@ if ($query && $query->num_rows == 1) {
 }
 ?>
 
-<h2>Modificar categoría</h2>
+<h2>
+    <?php
+    if (isset($_GET['id'])) {
+        echo "Modificar categoría ($category->name)";
+    } else {
+        echo "Nueva categoría";
+    }
+    ?>
+</h2>
 <form action="<?= baseURL ?>Category/save&id=<?=$_GET['id']?>" method="POST">
     <br>
     <div class="input-box">

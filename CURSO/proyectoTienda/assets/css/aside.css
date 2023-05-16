@@ -1,6 +1,7 @@
 
 aside {
     background-color: var(--trans-green);
+    border-radius: 0 .5em .5em 0;
     grid-area: aside;
     height: fit-content;
     margin: calc(var(--h2-height) * 2.8) 0 1em 0;
@@ -17,8 +18,16 @@ aside li {
     width: 100%;
 }
 
-aside li:first-child {
-    text-align: center;
+.user h3 {
+    background-color: green;
+    border-bottom: 1px solid darkgreen;
+    border-radius: .25em;
+    color: white;
+    display: block;
+    font-size: 1.25em;
+    margin: 1em auto;
+    padding: .25em .5em;
+    width: fit-content
 }
 
 aside img {
@@ -26,7 +35,7 @@ aside img {
     -webkit-clip-path: circle(50%);
     clip-path: circle(50%);
     height: 10em;
-    margin-bottom: 1em;
+    margin: 1em auto;
     width: 10em;
 }
 

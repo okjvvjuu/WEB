@@ -1,6 +1,6 @@
 <?php
 
-require_once 'models/User.php';
+require_once './models/User.php';
 
 class UserController {
 
@@ -25,7 +25,7 @@ class UserController {
             if (!$login) {
                 $_SESSION['lstError']['login'] = 'Datos inválidos';
             } else {
-                $_SESSION['user'] = $login;
+                $_SESSION['user'] = new User($login->id, $login->rol, $login->email, $login->password, $login->name, $login->surname, $login->image);
             }
         } else {
             $_SESSION['lstError']['login'] = 'Datos inválidos';
@@ -36,26 +36,32 @@ class UserController {
     public function logout() {
         if (isset($_SESSION['user'])) {
             session_unset();
-            header('Location:' . baseURL);
         }
+        header('Location:' . baseURL);
     }
 
     public function save() {
-        if (isset($_POST) && $check = Utils::checkRegisterData($_POST)) {
-            $user = new User($_POST['email'], $_POST['password'], $_POST['name'], $_POST['surname']);
-            try {
-                $save = $user->save();
-            } catch (Exception $e) {
-                $_SESSION['lstError']['signin'] = $e->getMessage();
+        if (Utils::isAdmin()) {
+            if (isset($_POST) && $check = Utils::checkRegisterData($_POST)) {
+                echo 'no esta hecho';
+                die();
+                $user = new User();
+                try {
+                    $save = $user->save();
+                } catch (Exception $e) {
+                    $_SESSION['lstError']['signin'] = $e->getMessage();
+                }
+            } else {
+                $_SESSION['lstError']['signin'] = 'Datos inválidos';
+            }
+
+            if ($check && $save) {
+                header('Location:' . baseURL);
+            } else {
+                header('Location:' . baseURL . 'User/signin');
             }
         } else {
-            $_SESSION['lstError']['signin'] = 'Datos inválidos';
-        }
-
-        if ($check && $save) {
-            header('Location:' . baseURL);
-        } else {
-            header('Location:' . baseURL . 'User/signin');
+            echo defaultErrorMessage;
         }
     }
 

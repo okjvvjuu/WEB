@@ -16,39 +16,39 @@
         <tbody>
             <?php
             require_once './controllers/CategoryController.php';
-            $categories = ProductController::getAllProductsAndCategory();
-            foreach ($categories as $key => $value):
+            $products = ProductController::getAllProducts();
+            foreach ($products as $product):
                 ?>
                 <tr>
                     <td>
-                        <?= $value->name ?>
+                        <?= $product->getName() ?>
                     </td>
                     <td>
-                        <?= $value->id ?>
+                        <?= $product->getId() ?>
                     </td>
                     <td>
-                        <?= $value->category . ' (id=' . $value->id_from_category . ')' ?>
+                        <?= CategoryController::getCategory($product->getCategory_id())->getName() . ' (id=' . $product->getCategory_id() . ')' ?>
                     </td>
                     <td>
-                        <?= $value->description ?>
+                        <?= $product->getDescription() ?>
                     </td>
                     <td>
-                        <?= $value->price ?>€
+                        <?= $product->getPrice() ?>€
                     </td>
                     <td>
-                        <?= $value->stock ?>
+                        <?= $product->getStock() ?>
                     </td>
                     <td>
-                        <?= $value->sale ?>
+                        <?= $product->getSale() ?>
                     </td>
                     <td>
-                        <?= $value->image ?>
+                        <img src="../uploads/images/<?=$product->getImage()?>" width="48" height="48" alt="image"/>
                     </td>
                     <td>
-                        <?= $value->date ?>
+                        <?= $product->getDate() ?>
                     </td>
                     <td>
-                        <a href="<?= baseURL ?>Product/modify&id=<?= $value->id ?>" class="button">Modificar</a><a href="<?= baseURL ?>Category/delete&id=<?= $value->id ?>" class="button error">Eliminar</a>
+                        <a href="<?= baseURL ?>Product/modify&id=<?= $product->getId() ?>" class="button">Modificar</a><a href="<?= baseURL ?>Product/delete&id=<?= $product->getId() ?>" class="button error">Eliminar</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -56,4 +56,4 @@
     </table>
 </div>
 
-<a href="<?= baseURL ?>Category/modify" class="button">Crear producto</a>
+<a href="<?= baseURL ?>Product/modify" class="button">Crear producto</a>

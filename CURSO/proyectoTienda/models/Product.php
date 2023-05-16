@@ -13,24 +13,27 @@ class Product {
     private $image;
     private $db;
 
-    public function __construct($name, $price, $date, $stock, $description = null, $sale = null, $image = null, $category_id = null) {
+    public function __construct($id = null, $name, $price, $date, $stock, $description = null, $sale = null, $image = null, $category_id = null) {
         $this->db = Database::connect();
-        
-        $this->id = null;
+
+        $this->id = $id;
         $this->setName($name);
         $this->setPrice($price);
         $this->setDate($date);
         $this->setStock($stock);
         $this->setDescription($description);
         $this->setSale($sale);
-        $this->setImage(null);
+        $this->setImage($image);
         $this->setCategory_id($category_id);
     }
 
-    public function exists(): bool {
+    public function exists($id = null): bool {
+        if (is_null($id)) {
+            $id = $_GET['id'];
+        }
         return $this
                         ->db
-                        ->query("SELECT * FROM products WHERE id = '" . $_GET['id'] . "';")
+                        ->query("SELECT * FROM products WHERE id = '" . $id . "';")
                 ->num_rows > 0;
     }
 
@@ -38,6 +41,30 @@ class Product {
         $this
                 ->db
                 ->query("DELETE FROM products WHERE id = '" . $_GET['id'] . "';");
+    }
+
+    public function deleteSelf(): void {
+        $this->deleteSelfFromDatabase();
+        $this->removeImage();
+    }
+
+    public function updateSelf() {
+        $this
+                ->db
+                ->query("UPDATE products SET"
+                        . " category_id = $this->category_id,"
+                        . " name = '$this->name',"
+                        . " description = '$this->description',"
+                        . " price = $this->price,"
+                        . " stock = $this->stock,"
+                        . " sale = '$this->sale',"
+                        . " date = '$this->date',"
+                        . " image = '$this->image'"
+                        . " WHERE id = $this->id");
+    }
+
+    public function removeImage(): void {
+        unlink('./uploads/images/' . $this->image);
     }
 
     public function save(): void {
@@ -52,8 +79,7 @@ class Product {
                         . $this->stock . "', '"
                         . $this->sale . "', '"
                         . $this->date . "', '"
-                        . $this->image . "WIP'"
-                        . ");"
+                        . $this->image . "');"
         );
     }
 

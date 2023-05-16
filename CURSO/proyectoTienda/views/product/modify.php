@@ -3,13 +3,20 @@ require_once './models/Product.php';
 
 $db = Database::connect();
 $query = $db->query("SELECT * FROM products WHERE id = '" . $_GET['id'] . "';");
-$product = null;
 if ($query && $query->num_rows == 1) {
     $temp = $query->fetch_object();
 }
 ?>
 
-<h2>Modificar producto</h2>
+<h2>
+    <?php
+    if (isset($_GET['id'])) {
+        echo "Modificar producto ($temp->name)";
+    } else {
+        echo "Nuevo producto";
+    }
+    ?>
+</h2>
 <form action="<?= baseURL ?>Product/save&id=<?= $_GET['id'] ?>" method="POST" enctype="multipart/form-data">
     <br/>
     <div class="input-box">
@@ -33,10 +40,16 @@ if ($query && $query->num_rows == 1) {
 
     <div class="inline-input-box">
         <label for="category">Categoría:</label>
-        <select id="category" name="category">
-            <?php foreach (CategoryController::getAllCategories() as $value) : ?>
-                <option value="<?= $value->id ?>"><?= $value->name ?></option>
-            <?php endforeach; ?>
+        <select id="category" name="category" >
+            <?php
+            foreach (CategoryController::getAllCategories() as $value) :
+                if ($value->getId() == $temp->category_id) :
+                    ?>
+                    <option value="<?= $value->getId() ?>" selected ><?= $value->getName() ?></option>
+                <?php else: ?>
+                    <option value="<?= $value->getId() ?>"><?= $value->getName() ?></option>
+    <?php endif; ?>
+<?php endforeach; ?>
         </select>
     </div>
     <div class="inline-input-box">

@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 
 <?php
-error_reporting(E_ALL ^ E_WARNING ^ E_NOTICE);
+//error_reporting(E_ALL ^ E_WARNING ^ E_NOTICE);
 require_once './config/parameters.php';
 require_once './config/db.php';
 require_once './helpers/Utils.php';
+require_once './models/User.php';
+require_once './models/Product.php';
+require_once './models/Cart.php';
 
 session_start();
 ?>
@@ -12,11 +15,16 @@ session_start();
 <html>
     <?php require_once './views/layout/head.php'; ?>
     <body>
-        <?php require_once './views/layout/background.php'; ?>
+        <?php
+        require_once './views/layout/background.php';
+        require_once './views/layout/leaves.php';
+        ?>
         <div class="main">
-            <?php require_once './views/layout/header.php'; ?>
-            <?php require_once './views/layout/nav.php'; ?>            
-            <?php require_once './views/layout/aside.php' ?>
+            <?php
+            require_once './views/layout/header.php';
+            require_once './views/layout/nav.php';
+            //Aquí debería ir aside, pero PHP interpreta que mi aside tiene salida html, por lo que no me deja cambiar ningun header si lo coloco aqui
+            ?>
             <main>
                 <!-- Contenido de la página (controlador frontal)-->
                 <?php
@@ -42,11 +50,11 @@ session_start();
                     $error = new ErrorController();
                     $error->index();
                 }
-
                 require_once './views/layout/footer.php';
+                var_dump($_SESSION['cart']);
                 ?>
-
             </main>
+            <?php require_once './views/layout/aside.php'; ?>
         </div>
     </body>
 </html>

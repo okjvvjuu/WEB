@@ -6,8 +6,8 @@
         require_once './controllers/CategoryController.php';
         $array = CategoryController::getAllCategories();
 
-        foreach ($array as $key => $value):?>
-        <li><a href="#"><?=$value->name?></a></li>
+        foreach ($array as $value):?>
+        <li><a href="<?=baseURL?>category/productsByCategory&id=<?=$value->getId()?>"><?=$value->getName()?></a></li>
         <?php endforeach; ?>
 
         <li><a href="#"><i class="fa-solid fa-cart-shopping"></i></a></li>

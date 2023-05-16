@@ -1,0 +1,75 @@
+.product-details {
+    display: grid;
+    grid-template-columns: 4fr 6fr;
+    grid-template-areas:
+        "p_img  p_desc"
+        "p_info p_info";
+}
+
+.product-details > * {
+    margin: 5%;
+}
+
+.product-details_basic-info_price-and-date_price {
+    margin-left: 10%;
+    font-family: 'Kanit';
+    font-size: 2em;
+}
+
+.product-details_img {
+    aspect-ratio: 1 / 1;
+    background-color: var(--trans-light-gray);
+    border-radius: .5em;
+    padding: 1em;
+    grid-area: p_img;
+    width: 90%;
+}
+
+.product-details_img img {
+    aspect-ratio: 1 / 1;
+    border-radius: .5em;
+    width: 100%;
+}
+
+.product-details_basic-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    grid-area: p_desc;
+}
+
+.product-details_basic-info * {
+    margin: 0;
+}
+
+.product-details_basic-info_desc {
+    aspect-ratio: 6 / 2;
+    overflow-y: scroll;
+}
+
+.product-details_basic-info_price-and-date {
+    justify-self: end;
+    font-style: italic;
+}
+
+.product-details_more-info {
+    border-top: 1px solid lightgray;
+    display: flex;
+    grid-area: p_info;
+    margin: 0 5%;
+    padding-top: 1em;
+}
+
+.product-details_more-info > span {
+    display: inline-block;
+    width: 50%;
+}
+
+.product-details_basic-info_blur {
+    backdrop-filter: blur(1px);
+    height: 10px;
+    margin: 0;
+    position: relative;
+    top: -4px;
+    width: 100%;
+}

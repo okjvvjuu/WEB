@@ -10,20 +10,20 @@
             <?php
             require_once './controllers/CategoryController.php';
             $categories = CategoryController::getAllCategories();
-            foreach ($categories as $key => $value):
+            foreach ($categories as $value):
                 ?>
                 <tr>
                     <td>
-    <?= $value->id ?>
+                        <?= $value->getId() ?>
                     </td>
                     <td>
-    <?= $value->name ?>
+                        <?= $value->getName() ?>
                     </td>
                     <td>
-                        <a href="<?= baseURL ?>Category/modify&id=<?= $value->id ?>" class="button">Modificar</a><a href="<?= baseURL ?>Category/delete&id=<?= $value->id ?>" class="button error">Eliminar</a>
+                        <a href="<?= baseURL ?>Category/modify&id=<?= $value->getId() ?>" class="button">Modificar</a><a href="<?= baseURL ?>Category/delete&id=<?= $value->getId() ?>" class="button error">Eliminar</a>
                     </td>
                 </tr>
-<?php endforeach; ?>
+            <?php endforeach; ?>
         </tbody>
     </table>
 </div>

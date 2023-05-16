@@ -13,4 +13,9 @@ class Utils {
             return true;
         }
     }
+    
+    public static function isAdmin() {
+        session_start();
+        return isset($_SESSION['user']) && $_SESSION['user']->getRol() == 'admin';
+    }
 }

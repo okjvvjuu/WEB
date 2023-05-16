@@ -11,14 +11,14 @@ class User {
     private $image;
     private $db;
 
-    public function __construct($email = null, $password = null, $name = null, $surname = null) {
+    public function __construct($id = null, $rol = 'user', $email = null, $password = null, $name = null, $surname = null, $image = null) {
         $this->db = Database::connect();
         
         $this->setName($name);
         $this->setSurname($surname);
         $this->setEmail($email);
         $this->setPassword($password);
-        $this->rol = 'user';
+        $this->rol = $rol;
     }
     
     public function getDb() {

@@ -1,13 +1,14 @@
 
-:not(figcaption) > form {
+aside > form {
+    align-self: center;
     background-color: var(--trans-green);
     box-shadow: 0 0 .5em black;
     display: flex;
     flex-direction: column;
-    align-self: center;
+    margin: 5%;
+    min-width: 90%;
     padding: 1.5em 1em;
     overflow: hidden;
-    width: 90%;
 }
 
 form > * {

@@ -1,4 +1,7 @@
-<?php if (empty($_SESSION['user'])): ?>
+<?php
+require_once './models/User.php';
+if (empty($_SESSION['user'])):
+    ?>
     <aside>
         <?php
         if (isset($_SESSION['lstError']['login'])) {
@@ -20,15 +23,16 @@
         </form>
     </aside>
 <?php else: ?>
-    <aside>
+    <aside class="user">
+        <h3><?= $_SESSION['user']->getName() ?></h3>
+        <img src="<?= $_SESSION['user']->getImage() ?>" />
         <ul>
-            <li><img src="https://www.php.net/images/logos/php-logo.svg" /></li>
             <li><a href="#" class="aside-button">Mis pedidos</a></li>
-            <?php if ($_SESSION['user']->rol == 'admin'): ?>
-                <li><a href="<?=baseURL?>Product/manage" class="aside-button">Gestionar productos</a></li>
-                <li><a href="<?=baseURL?>Category/manage" class="aside-button">Gestionar categorías</a></li>
-            <?php endif; ?>
-            <li><a href="<?=baseURL?>User/logout" class="aside-button red">Cerrar sesión</a></li>
+    <?php if ($_SESSION['user']->getRol() == 'admin'): ?>
+                <li><a href="<?= baseURL ?>Product/manage" class="aside-button">Gestionar productos</a></li>
+                <li><a href="<?= baseURL ?>Category/manage" class="aside-button">Gestionar categorías</a></li>
+    <?php endif; ?>
+            <li><a href="<?= baseURL ?>User/logout" class="aside-button red">Cerrar sesión</a></li>
         </ul>
     </aside>
 <?php endif;
