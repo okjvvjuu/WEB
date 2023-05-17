@@ -3,15 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Z:/WEB/CURSO/proyectoTienda/views/product/details.php</file>
-            <file>file:/Z:/WEB/CURSO/proyectoTienda/models/Cart.php</file>
-            <file>file:/Z:/WEB/CURSO/proyectoTienda/models/Product.php</file>
-            <file>file:/Z:/WEB/CURSO/proyectoTienda/controllers/ProductController.php</file>
-            <file>file:/Z:/WEB/CURSO/proyectoTienda/views/product/featured.php</file>
-            <file>file:/Z:/WEB/CURSO/proyectoTienda/controllers/CategoryController.php</file>
-            <file>file:/Z:/WEB/CURSO/proyectoTienda/assets/css/product.css</file>
-            <file>file:/Z:/WEB/CURSO/proyectoTienda/index.php</file>
-            <file>file:/Z:/WEB/CURSO/proyectoTienda/controllers/CartController.php</file>
+            <file>file:/C:/wamp64/www/WEB/CURSO/proyectoTienda/views/cart/index.php</file>
+            <file>file:/C:/wamp64/www/WEB/CURSO/proyectoTienda/controllers/UserController.php</file>
+            <file>file:/C:/wamp64/www/WEB/CURSO/proyectoTienda/controllers/OrderController.php</file>
+            <file>file:/C:/wamp64/www/WEB/CURSO/proyectoTienda/assets/css/main.css</file>
+            <file>file:/C:/wamp64/www/WEB/CURSO/proyectoTienda/controllers/CategoryController.php</file>
+            <file>file:/C:/wamp64/www/WEB/CURSO/proyectoTienda/views/order/check.php</file>
+            <file>file:/C:/wamp64/www/WEB/CURSO/proyectoTienda/views/order/info.php</file>
         </group>
     </open-files>
 </project-private>

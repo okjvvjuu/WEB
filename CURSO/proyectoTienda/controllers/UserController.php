@@ -30,7 +30,7 @@ class UserController {
         } else {
             $_SESSION['lstError']['login'] = 'Datos inválidos';
         }
-        header('Location:' . baseURL);
+        header('Location:' . $_SESSION['lastPage']);
     }
 
     public function logout() {
