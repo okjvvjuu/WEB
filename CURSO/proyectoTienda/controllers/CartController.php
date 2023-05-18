@@ -4,7 +4,7 @@ require_once './models/Product.php';
 require_once './models/Cart.php';
 
 class CartController {
-    
+
     public static function createCart() {
         return new Cart();
     }
@@ -14,6 +14,7 @@ class CartController {
     }
 
     public function add() {
+        header("location:" . $_SESSION['lastPage']);
         if (!isset($_SESSION['cart'])) {
             $this->createCart();
         }
@@ -29,7 +30,6 @@ class CartController {
             } else {
                 $_SESSION['cart']->addProduct($product, $qty);
             }
-            header("location:" . $_SESSION['lastPage']);
         }
     }
 
@@ -37,7 +37,7 @@ class CartController {
         $_POST['qty'] = -1;
         $this->add();
     }
-    
+
     public function addOne() {
         $_POST['qty'] = 1;
         $this->add();

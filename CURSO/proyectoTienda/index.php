@@ -14,6 +14,7 @@ session_start();
 
 if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = CartController::createCart();
+    $_SESSION['cart']->setTotalCost(0);
 }
 ?>
 
@@ -25,13 +26,7 @@ if (!isset($_SESSION['cart'])) {
         require_once './views/layout/leaves.php';
         ?>
         <div class="main">
-            <?php
-            require_once './views/layout/header.php';
-            require_once './views/layout/nav.php';
-            //Aquí debería ir aside, pero PHP interpreta que mi aside tiene salida html, por lo que no me deja cambiar ningun header si lo coloco aqui
-            ?>
             <main>
-                <!-- Contenido de la página (controlador frontal)-->
                 <?php
                 $controllerName = '';
                 $action = '';
@@ -58,7 +53,11 @@ if (!isset($_SESSION['cart'])) {
                 require_once './views/layout/footer.php';
                 ?>
             </main>
-            <?php require_once './views/layout/aside.php'; ?>
+            <?php
+            require_once './views/layout/aside.php';
+            require_once './views/layout/header.php';
+            require_once './views/layout/nav.php';
+            ?>
         </div>
     </body>
 </html>

@@ -157,15 +157,14 @@ class ProductController {
                                     ->fetch_object()
                             ->image;
                 }
-                if (empty($_GET['id']) || is_null($image) || search_image('./uploads/images/' . $image)) {
-                    $image = ''; //Default image
+                if (empty($_GET['id']) || is_null($image) || !Utils::searchFile('./uploads/images/' . $image)) {
+                    $image = 'default.png';
                 }
             }
 
-            $name = $image['name'];
-            $type = $image['type'];
-
-            $product = new Product(null, $_POST['name'], $_POST['price'], date_create()->format("Y-m-d"), $_POST['stock'], $_POST['description'], $_POST['sale'], $name, $_POST['category']);
+            $name = isset($image['name']) ? $image['name']:$image;
+            $type = isset($image['type']) ? $image['type']:'';
+            $product = new Product($_GET['id'], $_POST['name'], $_POST['price'], (new DateTime('now', new DateTimeZone('Europe/Madrid')))->format("Y-m-d H-i-s"), $_POST['stock'], $_POST['description'], $_POST['sale'], $name, $_POST['category']);
 
             try {
                 if (!empty($_GET['id']) && $product->exists()) {
@@ -178,8 +177,10 @@ class ProductController {
                         mkdir('uploads/images', 0777, true);
                     }
                     move_uploaded_file($image['tmp_name'], 'uploads/images/' . $name);
-                } else {
+                } else if ($type != '') {
                     $_SESSION['lstError']['product_image_type'] = "El tipo de imagen ('" . $image['type'] . "') no es el correcto (png)";
+                    echo $_SESSION['lstError']['product_image_type']; //TEMPORAL
+                    die();
                 }
                 header('Location:' . baseURL . 'Product/manage');
             } catch (Exception $e) {

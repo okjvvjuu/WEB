@@ -1,6 +1,6 @@
 
 <h2>Datos del pedido</h2>
-<form action="<?=baseURL?>order/check" method="POST">
+<form action="<?=baseURL?>Order/check" method="POST">
     <div class="input-box">
         <input type="text" name="province" id="province" value="" required />
         <label for="province">Provincia:</label>

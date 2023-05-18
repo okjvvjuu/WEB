@@ -8,7 +8,7 @@ $products = ProductController::getProductsByCategory($category_id);
 <section class="articles">
     <?php foreach ($products as $product): ?>
         <article class="product">
-            <a href="<?= baseURL ?>product/details&id=<?= $product->getId() ?>">
+            <a href="<?= baseURL ?>Product/details&id=<?= $product->getId() ?>">
                 <figure>
                     <div class="product-image">
                         <img src="<?= baseURL ?>uploads/images/<?= $product->getImage() ?>"/>

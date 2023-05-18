@@ -4,7 +4,7 @@
     <?php
     require_once './models/Product.php';
     if (isset($_SESSION['cart'])) {
-        $cart = $_SESSION['cart']->getContent();
+        $cart = $_SESSION['cart']->update()->getContent();
         if (empty($cart)) {
             echo '<h3 style="text-align: center;">No has añadido nada a tu carrito aun</h3>';
         } else {

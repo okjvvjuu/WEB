@@ -10,7 +10,8 @@ else :
             <img src="<?= baseURL ?>uploads/images/<?= $product->getImage() ?>" alt="<?= $product->getName() ?>"/>
         </div>
         <div class="product-details_basic-info">
-            <div><p class="product-details_basic-info_desc">
+            <div>
+                <p class="product-details_basic-info_desc">
                     <?= $product->getDescription() ?>
                     <br/>
                 </p>

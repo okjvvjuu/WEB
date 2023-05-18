@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="<?= baseURL ?>assets/css/leaves.css"/>
     <link rel="stylesheet" href="<?= baseURL ?>assets/css/product.css"/>
     <link rel="stylesheet" href="<?= baseURL ?>assets/css/cart.css"/>
+    <link rel="stylesheet" href="<?= baseURL ?>assets/css/orders.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lobster+Two:wght@400;700&family=Maitree:wght@300;400;500;600;700&display=swap" rel="stylesheet"><link rel="preconnect" href="https://fonts.googleapis.com">

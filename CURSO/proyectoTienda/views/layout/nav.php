@@ -9,7 +9,7 @@
 
         foreach ($array as $value):
             ?>
-            <li><a href="<?= baseURL ?>category/productsByCategory&id=<?= $value->getId() ?>"><?= $value->getName() ?></a></li>
+            <li><a href="<?= baseURL ?>Category/productsByCategory&id=<?= $value->getId() ?>"><?= $value->getName() ?></a></li>
         <?php endforeach; ?>
 
         <li>

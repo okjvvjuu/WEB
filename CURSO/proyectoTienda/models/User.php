@@ -14,6 +14,7 @@ class User {
     public function __construct($id = null, $rol = 'user', $email = null, $password = null, $name = null, $surname = null, $image = null) {
         $this->db = Database::connect();
         
+        $this->id = $id;
         $this->setName($name);
         $this->setSurname($surname);
         $this->setEmail($email);
