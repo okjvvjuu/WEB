@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <?php
+session_start();
 error_reporting(E_ALL ^ E_WARNING ^ E_NOTICE);
 require_once './config/parameters.php';
 require_once './config/db.php';
@@ -9,8 +10,6 @@ require_once './models/User.php';
 require_once './models/Product.php';
 require_once './models/Cart.php';
 require_once './controllers/CartController.php';
-
-session_start();
 
 if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = CartController::createCart();

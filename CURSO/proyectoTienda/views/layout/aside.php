@@ -27,11 +27,11 @@ if (empty($_SESSION['user'])):
         <h3><?= $_SESSION['user']->getName() ?></h3>
         <img src="<?= $_SESSION['user']->getImage() ?>" />
         <ul>
-            <li><a href="#" class="aside-button">Mis pedidos</a></li>
-    <?php if ($_SESSION['user']->getRol() == 'admin'): ?>
+            <li><a href="<?= baseURL ?>Order/index" class="aside-button">Mis pedidos</a></li>
+            <?php if ($_SESSION['user']->getRol() == 'admin'): ?>
                 <li><a href="<?= baseURL ?>Product/manage" class="aside-button">Gestionar productos</a></li>
                 <li><a href="<?= baseURL ?>Category/manage" class="aside-button">Gestionar categorías</a></li>
-    <?php endif; ?>
+            <?php endif; ?>
             <li><a href="<?= baseURL ?>User/logout" class="aside-button red">Cerrar sesión</a></li>
         </ul>
     </aside>

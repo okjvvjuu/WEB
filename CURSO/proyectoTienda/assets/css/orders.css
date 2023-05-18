@@ -37,3 +37,9 @@
     margin-bottom: 0;
     overflow-y: scroll;
 }
+
+.order-info ul {
+    border-left: .2em solid white;
+    margin-left: 1em;
+    padding-left: 1em;
+}

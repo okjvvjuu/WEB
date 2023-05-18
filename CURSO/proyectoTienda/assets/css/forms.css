@@ -1,5 +1,5 @@
 
-main > form, aside form {
+main > form, aside form, .form {
     align-self: center;
     background-color: var(--trans-green);
     box-shadow: 0 0 .5em black;
@@ -11,7 +11,7 @@ main > form, aside form {
     overflow: hidden;
 }
 
-form > * {
+form > *, .form > * {
     margin-left: 0;
     padding-left: .25em;
     width: 100%;
@@ -26,7 +26,7 @@ form input:not(input[type='submit']){
     transition: all .3s ease-in-out;
 }
 
-form h3 {
+form h3, .form h3 {
     border-bottom: .1em solid black;
     margin-top: 0;
 }

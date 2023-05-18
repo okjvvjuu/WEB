@@ -14,6 +14,7 @@
     border-bottom: 1px solid var(--trans-light-gray);
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     padding: .5em .5em 1.5em 1em ;
 }
 
@@ -29,6 +30,11 @@
     flex-wrap: wrap;
     justify-content: space-between;
     width:100%;
+}
+
+.cart-item figcaption div {
+    display: flex;
+    justify-content: space-between;
 }
 
 .cart-item span:not(.cart-item-buttons) {
