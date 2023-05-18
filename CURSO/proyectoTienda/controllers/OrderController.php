@@ -33,6 +33,10 @@ class OrderController {
     public function confirmation() {
         require_once './views/order/confirmation.php';
     }
+    
+    public function details() {
+        require_once './views/order/details.php';
+    }
 
     public function save() {
         if (isset($_SESSION['user'])) {

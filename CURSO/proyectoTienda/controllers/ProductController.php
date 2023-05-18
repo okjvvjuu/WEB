@@ -137,7 +137,6 @@ class ProductController {
     }
 
     public function modify() {
-        session_start();
         if (Utils::isAdmin()) {
             require_once './views/product/modify.php';
         } else {

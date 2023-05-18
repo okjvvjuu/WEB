@@ -62,15 +62,34 @@ class Order {
         if ($qty == -1) {
             $limit = '';
         } else {
-            $limit = "LIMIT $qty";
+            $limit = " LIMIT $qty";
         }
         $result = false;
         $query = $this
         ->db
-        ->query("SELECT * FROM products WHERE id IN (SELECT product_id FROM orders_products WHERE order_id = $this->id) ORDER BY date DESC $limit;");
+        ->query("SELECT * FROM products WHERE id IN (SELECT product_id FROM orders_products WHERE order_id = $this->id) ORDER BY date DESC$limit;");
         
         for ($i = 0; $temp = $query->fetch_object(); $i++) {
             $result[$i] = new Product($temp->id, $temp->name, $temp->price, $temp->date, $temp->stock, $temp->description, $temp->sale, $temp->image, $temp->category_id);
+        }
+        
+        return $result;
+    }
+    
+    public function getOrderedProductsAndQty($qty) {
+        if ($qty == -1) {
+            $limit = '';
+        } else {
+            $limit = " LIMIT $qty";
+        }
+        $result = false;
+        $query = $this
+        ->db
+        ->query("SELECT products.*, orders_products.qty FROM products JOIN orders_products ON products.id = orders_products.product_id  WHERE orders_products.order_id = $this->id ORDER BY products.name DESC$limit;");
+        
+        for ($i = 0; $temp = $query->fetch_object(); $i++) {
+            $result[$i]['product'] = new Product($temp->id, $temp->name, $temp->price, $temp->date, $temp->stock, $temp->description, $temp->sale, $temp->image, $temp->category_id);
+            $result[$i]['quantity'] = $temp->qty;
         }
         
         return $result;
@@ -80,9 +99,16 @@ class Order {
         $temp = $this->db->query("SELECT * FROM orders WHERE user_id = $userId ORDER BY date DESC LIMIT 1;")->fetch_object();
         return new Order($temp->id, $temp->user_id, $temp->province, $temp->location, $temp->direction, $temp->price, $temp->status, $temp->date);
     }
+    
+    public function fetchOrder($orderId) {
+        $temp = $this->db->query("SELECT * FROM orders WHERE id = $orderId;")->fetch_object();
+        return new Order($orderId, $temp->userId, $temp->province, $temp->location, $temp->direction, $temp->price, $temp->status, $temp->date);
+    }
 
     public function save() {
         $check = $this->db->query("INSERT INTO orders VALUES(null,$this->userId,'$this->province','$this->location','$this->direction',$this->price,'$this->status','$this->date');");
+        $id = $this->db->query("SELECT id FROM orders WHERE user_id = $this->userId ORDER BY date LIMIT 1;")->fetch_object()->id;
+        $this->setId($id);
     }
 
     public function getId() {

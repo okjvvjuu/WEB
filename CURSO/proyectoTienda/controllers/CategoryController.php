@@ -51,7 +51,6 @@ class CategoryController {
     }
 
     public function modify() {
-        session_start();
         $_SESSION['temp']['category_id'];
         if (Utils::isAdmin()) {
             require_once './views/category/modify.php';

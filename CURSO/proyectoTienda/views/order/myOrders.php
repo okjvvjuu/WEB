@@ -15,17 +15,23 @@ $orders = Order::getAllOrders($_SESSION['user']->getId());
             <?php
             foreach ($orders as $order) :
                 $products = $order->getOrderedProducts(4);
-                $p1 = $products[0]->getName();
-                $p2 = is_null($products[1]) ? '' : ', ' . $products[1]->getName();
-                $p3 = is_null($products[2]) ? '' : ', ' . $products[2]->getName();
+                $n1 = $products[0]->getName();
+                $n2 = is_null($products[1]) ? '' : ', ' . $products[1]->getName();
+                $n3 = is_null($products[2]) ? '' : ', ' . $products[2]->getName();
                 $dots = is_null($products[3]) ? '' : '...';
+
+                $i1 = $products[0]->getImage();
+                $i2 = is_null($products[1]) ? 'default.png' : $products[1]->getImage();
+                $i3 = is_null($products[2]) ? 'default.png' : $products[2]->getImage();
                 ?>
                 <li>
                     <figure class="cart-item">
-                        <img src="<<?= baseURL ?>uploads/images/default.png" alt="alt"/>
+                        <img src="<?= baseURL ?>uploads/images/<?= $i1 ?>" alt="alt" class="a"/>
+                        <img src="<?= baseURL ?>uploads/images/<?= $i2 ?>" alt="alt" class="b"/>
+                        <img src="<?= baseURL ?>uploads/images/<?= $i3 ?>" alt="alt" class="c"/>
                         <figcaption>
                             <div>
-                                <h3><?= $p1, $p2, $p3, $dots ?></h3>
+                                <h3><a href="<?=baseURL?>Order/details&id=<?=$order->getId()?>"><?= $n1, $n2, $n3, $dots ?></a></h3>
                             </div>
                             <div>
                                 <span><?= $order->getDate() ?></span>

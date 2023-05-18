@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="<?= baseURL ?>assets/css/aside.css"/>
     <link rel="stylesheet" href="<?= baseURL ?>assets/css/leaves.css"/>
     <link rel="stylesheet" href="<?= baseURL ?>assets/css/product.css"/>
-    <link rel="stylesheet" href="<?= baseURL ?>assets/css/cart.css"/>
+    <link rel="stylesheet" href="<?= baseURL ?>assets/css/listedItems.css"/>
     <link rel="stylesheet" href="<?= baseURL ?>assets/css/orders.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
