@@ -21,6 +21,8 @@ if (empty($_SESSION['user'])):
             </div>
             <input type="submit" value="Enviar" />
         </form>
+        <p><a href="<?= baseURL ?>User/signin" class="button">&rightarrow;¿No tienes cuenta?&leftarrow;</a></p>
+
     </aside>
 <?php else: ?>
     <aside class="user">
@@ -29,6 +31,7 @@ if (empty($_SESSION['user'])):
         <ul>
             <li><a href="<?= baseURL ?>Order/index" class="aside-button">Mis pedidos</a></li>
             <?php if ($_SESSION['user']->getRol() == 'admin'): ?>
+                <li><a href="<?= baseURL ?>Order/manage" class="aside-button">Gestionar pedidos</a></li>
                 <li><a href="<?= baseURL ?>Product/manage" class="aside-button">Gestionar productos</a></li>
                 <li><a href="<?= baseURL ?>Category/manage" class="aside-button">Gestionar categorías</a></li>
             <?php endif; ?>

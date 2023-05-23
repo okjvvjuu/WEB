@@ -2,17 +2,21 @@
 
 require_once './models/User.php';
 
-class UserController {
+class UserController
+{
 
-    public function index() {
+    public function index()
+    {
         echo 'Controlador usuarios, accion index';
     }
 
-    public function signin() {
+    public function signin()
+    {
         require_once './views/user/signin.php';
     }
 
-    public function login() {
+    public function login()
+    {
         if (isset($_POST) && Utils::checkRegisterData($_POST)) {
             $user = new User();
             $user->setEmail($_POST['email']);
@@ -30,39 +34,38 @@ class UserController {
         } else {
             $_SESSION['lstError']['login'] = 'Datos inválidos';
         }
-        header('Location:' . $_SESSION['lastPage']);
-    }
-
-    public function logout() {
-        if (isset($_SESSION['user'])) {
-            session_unset();
-        }
         header('Location:' . baseURL);
     }
 
-    public function save() {
-        if (Utils::isAdmin()) {
-            if (isset($_POST) && $check = Utils::checkRegisterData($_POST)) {
-                echo 'no esta hecho';
-                die();
-                $user = new User();
-                try {
-                    $save = $user->save();
-                } catch (Exception $e) {
-                    $_SESSION['lstError']['signin'] = $e->getMessage();
-                }
-            } else {
-                $_SESSION['lstError']['signin'] = 'Datos inválidos';
-            }
-
-            if ($check && $save) {
-                header('Location:' . baseURL);
-            } else {
-                header('Location:' . baseURL . 'User/signin');
-            }
-        } else {
-            echo defaultErrorMessage;
+    public function logout()
+    {
+        if (isset($_SESSION['user'])) {
+            session_unset();
         }
+        header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+        header("Pragma: no-cache");
+        header("Expires: 0");
+    
+        header("Location:".baseURL);
     }
 
+    public function save()
+    {
+        if (isset($_POST) && $check = Utils::checkRegisterData($_POST)) {
+            $user = new User(null, 'user', $_POST['email'], $_POST['password'], $_POST['name'], $_POST['surname'], null);
+            try {
+                $save = $user->save();
+            } catch (Exception $e) {
+                $_SESSION['lstError']['signin'] = $e->getMessage();
+            }
+        } else {
+            $_SESSION['lstError']['signin'] = 'Datos inválidos';
+        }
+
+        if ($check && $save) {
+            header('Location:' . baseURL);
+        } else {
+            header('Location:' . baseURL . 'User/signin');
+        }
+    }
 }

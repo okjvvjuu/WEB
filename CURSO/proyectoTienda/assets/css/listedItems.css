@@ -61,14 +61,16 @@
 
 .cart-item img.b {
     position: absolute;
-    transform: translate(-.6em, -.6em);
-    width:5%;
+    transform: translate(-.35em, -.35em);
+    width: 6.5%;
+    z-index: 1;
+
 }
 
 .cart-item img.c {
     position: absolute;
-    transform: translate(-.35em, -.35em);
-    width: 6.5%;
+    transform: translate(-.6em, -.6em);
+    width:5%;
 }
 
 .cart-item-buttons {

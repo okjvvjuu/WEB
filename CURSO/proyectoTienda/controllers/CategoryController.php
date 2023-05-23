@@ -61,7 +61,6 @@ class CategoryController {
 
     public function save() {
         if (Utils::isAdmin()) {
-
             $category = new Category($_GET['id'], $_POST['name']);
             try {
                 if (isset($_GET['id'])) {

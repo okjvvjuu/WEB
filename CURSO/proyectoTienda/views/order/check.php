@@ -3,8 +3,16 @@ $province = $_POST['province'];
 $location = $_POST['location'];
 $direction = $_POST['direction'];
 
+if (isset($_POST['status'])) {
+    $_SESSION['status'] = $_POST['status'];
+}
+
 $cart = $_SESSION['cart'];
 $content = $cart->getContent();
+
+if (is_null($content) && !empty($_GET['id'])) {
+    $content = (new Order($_GET['id']))->fetch()->getOrderedProducts(-1);
+}
 ?>
 
 <h2>Revisar pedido</h2>
@@ -25,11 +33,11 @@ $content = $cart->getContent();
             <?php endforeach; ?>
         </ol>
         <div class="product-details_basic-info_blur"></div>
-        <h3><u>Precio total: <?= $cart->getTotalCost() ?>€</u></h3>
+        <h3><u>Precio total: <?= $cart->getTotalCost() == 0 ? '=':$cart->getTotalCost() ?>€</u></h3>
     </div>
 
     <div style="text-align: center;">
-        <a href="<?=baseURL?>Order/save" class="button">Continuar</a>
+        <a href="<?=baseURL?>Order/save&id=<?=$_GET['id']?>" class="button">Continuar</a>
     </div>
 
 </div>

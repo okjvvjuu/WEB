@@ -17,11 +17,15 @@
     width: 33%;
 }
 
-.order-info li {
+.order-info h3 {
+    margin: 0 1em;
+}
+
+.order-info li:not(:last-child) {
     margin-bottom: 1.25em;
 }
 
-.order-info span:nth-child(2) {
+.order-info div:nth-child(2) {
     border-left: .2em solid white;
 }
 

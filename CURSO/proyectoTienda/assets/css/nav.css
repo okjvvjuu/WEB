@@ -14,14 +14,13 @@ nav a {
     border-color: lightgray;
     border-left: .3em solid lightgrey;
     border-radius: .2em;
-    padding: .25em .5em;
+    display: inline-block;
+    padding: .5em 1em;
     transition: all .2s ease-in-out;
 }
 
 nav a:hover {
     box-shadow: 0 0 5px white;
-    font-size: large;
-    font-weight: 600;
     text-shadow: 0 0 .1em white;
 }
 
@@ -38,5 +37,8 @@ nav ul {
     flex-wrap: wrap;
     justify-content: space-around;
     grid-area: nav;
+    height: fit-content;
+    margin: 0;
+    padding: .5em .125em;
     width: 100%;
 }

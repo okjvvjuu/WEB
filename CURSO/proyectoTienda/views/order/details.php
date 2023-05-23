@@ -1,7 +1,7 @@
 <?php
 $orderId = $_GET['id'];
-$order = (new Order())->fetchOrder($orderId);
-$products = $order->getOrderedProductsAndQty(-1);
+$order = (new Order($orderId))->fetch();
+$products = $order->getOrderedProducts(-1);
 ?>
 
 <h2>Detalles del pedido</h2>
@@ -11,7 +11,7 @@ $products = $order->getOrderedProductsAndQty(-1);
         <ul>
             <li><b>Dirección de envío:</b> <?= $order->getDirection() . ' (' . $order->getLocation() . ', ' . $order->getProvince() . ')' ?></li>
             <li><b>Precio total:</b> <?= $order->getPrice() ?></li>
-            <li><b>Estado:</b> <?= $order->getStatus() ?></li>
+            <li><b>Estado:</b> <?= $order->getStatusForDisplay() ?></li>
         </ul>
     </div>
     <br/>

@@ -10,6 +10,16 @@ class User {
     private $rol;
     private $image;
     private $db;
+    
+    public static function getAllUsers() {
+        $db = Database::connect();
+        $query = $db->query("SELECT * FROM users ORDER BY id;");
+        $result = false;
+        for ($i = 0; $temp = $query->fetch_object(); $i++) {
+            $result[$i] = new User($temp->id, $temp->rol, $temp->email, $temp->password, $temp->name, $temp->surname, $temp->image);
+        }
+        return $result;
+    }
 
     public function __construct($id = null, $rol = 'user', $email = null, $password = null, $name = null, $surname = null, $image = null) {
         $this->db = Database::connect();
@@ -20,6 +30,14 @@ class User {
         $this->setEmail($email);
         $this->setPassword($password);
         $this->rol = $rol;
+    }
+    
+    public function fetch($userId) {
+        $temp = $this
+                ->db
+                ->query("SELECT * FROM users WHERE id = $userId;")
+                ->fetch_object();
+        return new User($temp->id, $temp->rol, $temp->email, $temp->password, $temp->name, $temp->surname, $temp->image);
     }
     
     public function getDb() {
@@ -81,6 +99,10 @@ class User {
         $this->image = $image;
     }
     
+    public function setId($id): void {
+        $this->id = $id;
+    }
+    
     public function login() {
         $login = $this->db->query("SELECT * FROM users WHERE email = '{$this->email}'");
         
@@ -90,11 +112,12 @@ class User {
             $this->setPassword($this->password);
         }
         
-        return $checkPassword && $user ? $user:false;
+        return $checkPassword && isset($user) ? $user:false;
     }
 
     public function save() {
-        $save = $this->db->query("INSERT INTO users VALUES(null, '{$this->name}', '{$this->surname}', '{$this->email}', '{$this->password}', 'user', null);");
-        return $save ? true:false;
+        $save = $this->db->query("INSERT INTO users VALUES(null, '$this->name', '$this->surname', '$this->email', '$this->password', '$this->rol', null);");
+        $this->setId($this->db->query("SELECT id FROM users WHERE email = '$this->email' LIMIT 1")->fetch_object()->id);
+        return $save;
     }
 }

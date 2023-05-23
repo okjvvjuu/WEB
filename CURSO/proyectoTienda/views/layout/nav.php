@@ -1,5 +1,6 @@
 <nav>
     <ul>
+        <li><div><i class="fa-solid fa-bars"></i></div></li>
         <li><a href="<?= baseURL ?>">Inicio</a></li>
 
         <?php
