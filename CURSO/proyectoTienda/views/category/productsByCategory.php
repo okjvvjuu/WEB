@@ -2,6 +2,12 @@
 $category_id = $_GET['id'];
 $category = CategoryController::getCategory($_GET['id']);
 $products = ProductController::getProductsByCategory($category_id);
+
+if (isset($_SESSION['lstError']['category'])) {
+    require_once './views/layout/errorMessage.php';
+    unset($_SESSION['lstError']['category']);
+}
+
 ?>
 
 <h2><?= $category->getName() ?></h2>

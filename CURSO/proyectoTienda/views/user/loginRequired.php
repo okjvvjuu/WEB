@@ -1,1 +1,1 @@
-<h2>Necesitas <u>iniciar sesión</u> para comprar en nuestra página</h2>
+<h2>Necesitas <mark>iniciar sesión</mark> para comprar en nuestra página</h2>

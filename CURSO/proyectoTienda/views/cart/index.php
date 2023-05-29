@@ -1,5 +1,10 @@
-
 <h2>Mi carrito</h2>
+<?php
+if (isset($_SESSION['lstError']['cart'])) {
+    require_once './views/layout/errorMessage.php';
+    unset($_SESSION['lstError']['cart']);
+}
+?>
 <ul class="cart">
     <?php
     require_once './models/Product.php';
@@ -13,10 +18,10 @@
                 $price = $product->realPrice();
                 $name = $product->getName();
                 $qty = $value['quantity'];
-                ?>
+    ?>
                 <li>
                     <figure class="cart-item">
-                        <img src="<?= baseURL ?>uploads/images/<?= $product->getImage() ?>" alt="<?= $name ?>"/>
+                        <img src="<?= baseURL ?>uploads/images/<?= $product->getImage() ?>" alt="<?= $name ?>" />
                         <figcaption>
                             <h3><?= $name ?></h3>
                             <span>Cantidad: <?= $qty ?></span>
@@ -28,7 +33,7 @@
                         </figcaption>
                     </figure>
                 </li>
-                <?php
+    <?php
             endforeach;
         }
     }
@@ -39,9 +44,9 @@
 
 <div>
     <form action="<?= baseURL ?>Order/info" method="POST">
-        <?php if (empty($cart)): ?>
+        <?php if (empty($cart)) : ?>
             <input type="submit" value="Finalizar compra" disabled />
-        <?php else: ?>
+        <?php else : ?>
             <input type="submit" value="Finalizar compra" />
         <?php endif; ?>
     </form>

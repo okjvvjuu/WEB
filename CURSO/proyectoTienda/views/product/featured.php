@@ -1,4 +1,12 @@
 <h2>Productos destacados</h2>
+
+<?php
+if (isset($_SESSION['lstError']['product'])) {
+    require_once './views/layout/errorMessage.php';
+    unset($_SESSION['lstError']['product']);
+}
+?>
+
 <section class="articles">
     <?php foreach (ProductController::getFeaturedProducts(-1) as $product): ?>
         <article class="product">

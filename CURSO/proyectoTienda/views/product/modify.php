@@ -15,7 +15,13 @@ if ($query && $query->num_rows == 1) {
     } else {
         echo "Nuevo producto";
     }
+
+    if (isset($_SESSION['lstError']['product'])) {
+        require_once './views/layout/errorMessage.php';
+        unset($_SESSION['lstError']['product']);
+    }
     ?>
+    
 </h2>
 <form action="<?= baseURL ?>Product/save&id=<?= $_GET['id'] ?>" method="POST" enctype="multipart/form-data">
     <br/>

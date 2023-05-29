@@ -30,15 +30,12 @@ class CategoryController {
                         ->fetch_array()[0];
     }
 
-    public function index() {
-        echo 'Controlador categorias, accion index';
-    }
-
     public function manage() {
         if (Utils::isAdmin()) {
             require_once './views/category/manage.php';
         } else {
-            echo defaultErrorMessage;
+            $_SESSION['lstError']['category'] = 'Se requieren permisos de administrador para esto';
+            header('Location: '.$_SESSION['lastPage']);
         }
     }
 
@@ -46,7 +43,8 @@ class CategoryController {
         if (isset($_GET['id']) && !empty($_GET['id'])) {
             require_once './views/category/productsByCategory.php';
         } else {
-            echo defaultErrorMessage;
+            $_SESSION['lstError']['category'] = 'No ha seleccionado una categoría valida';
+            header('Location: '.$_SESSION['lastPage']);
         }
     }
 
@@ -55,7 +53,8 @@ class CategoryController {
         if (Utils::isAdmin()) {
             require_once './views/category/modify.php';
         } else {
-            echo defaultErrorMessage;
+            $_SESSION['lstError']['category'] = 'Se requieren permisos de administrador para esto';
+            header('Location: '.$_SESSION['lastPage']);
         }
     }
 
@@ -71,13 +70,13 @@ class CategoryController {
                         $category->save();
                     }
                 }
-                header('Location:' . baseURL . 'Category/manage');
             } catch (Exception $e) {
-                echo $e->getMessage();
-                die();
+                $_SESSION['lstError']['category'] = 'Ha ocurrido un error con la base de datos, inténtelo de nuevo';
             }
+            header('Location:' . baseURL . 'Category/manage');
         } else {
-            echo defaultErrorMessage;
+            $_SESSION['lstError']['category'] = 'Se requieren permisos de administrador para esto';
+            header('Location: '.$_SESSION['lastPage']);
         }
     }
 
@@ -88,17 +87,20 @@ class CategoryController {
                 $category = CategoryController::getCategory($id);
             }
             if (!$category) {
-                $_SESSION['lstError']['category_delete'] = 'La categoría no se encuentra, vuelva a intentarlo más tarde';
+                $_SESSION['lstError']['category'] = 'La categoría no se encuentra, vuelva a intentarlo más tarde';
             } else {
                 try {
                     $category->deleteSelfFromDatabase();
                     header('Location:' . baseURL . 'Category/manage');
                 } catch (Exception $ex) {
                     echo $ex->getMessage();
+                    $_SESSION['lstError']['category'] = 'Ha ocurrido un error con la base de datos, inténtelo de nuevo';
                 }
             }
+            header('Location:' . baseURL . 'Category/manage');
         } else {
-            echo defaultErrorMessage;
+            $_SESSION['lstError']['category'] = 'Se requieren permisos de administrador para esto';
+            header('Location: '.$_SESSION['lastPage']);
         }
     }
 

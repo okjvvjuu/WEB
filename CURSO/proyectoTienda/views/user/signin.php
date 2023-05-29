@@ -2,7 +2,7 @@
 <?php
 if (isset($_SESSION['lstError']['signin'])) {
     require_once './views/layout/errorMessage.php';
-    session_unset();
+    unset($_SESSION['lstError']['signin']);
 }
 ?>
 <form action="<?= baseURL ?>User/save" method="POST">

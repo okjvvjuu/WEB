@@ -5,6 +5,12 @@ unset($_SESSION['direction']);
 unset($_SESSION['location']);
 unset($_SESSION['province']);
 unset($_SESSION['userId']);
+
+if (isset($_SESSION['lstError']['order'])) {
+    require_once './views/layout/errorMessage.php';
+    unset($_SESSION['lstError']['order']);
+}
+
 ?>
 <h2>Tu pedido ha sido completado</h2>
 

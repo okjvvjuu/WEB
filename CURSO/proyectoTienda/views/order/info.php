@@ -1,5 +1,13 @@
 
 <h2>Datos del pedido</h2>
+
+<?php
+if (isset($_SESSION['lstError']['order'])) {
+    require_once './views/layout/errorMessage.php';
+    unset($_SESSION['lstError']['order']);
+}
+?>
+
 <form action="<?=baseURL?>Order/check" method="POST">
     <div class="input-box">
         <input type="text" name="province" id="province" value="" required />

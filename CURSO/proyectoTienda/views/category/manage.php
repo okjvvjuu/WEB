@@ -1,5 +1,12 @@
 <h2>Gestionar categorías</h2>
 
+<?php
+if (isset($_SESSION['lstError']['category'])) {
+    require_once './views/layout/errorMessage.php';
+    unset($_SESSION['lstError']['category']);
+}
+?>
+
 <div class="table">
     <table>
         <thead>

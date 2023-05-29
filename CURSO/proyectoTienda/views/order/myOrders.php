@@ -5,6 +5,14 @@ $orders = Order::getAllOrders($_SESSION['user']->getId());
 //Enlace para vista indiviual en cada uno
 ?>
 <h2>Mis pedidos</h2>
+
+<?php
+if (isset($_SESSION['lstError']['order'])) {
+    require_once './views/layout/errorMessage.php';
+    unset($_SESSION['lstError']['order']);
+}
+?>
+
 <div>
     <?php
     if (!$orders) :
