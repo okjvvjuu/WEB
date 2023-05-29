@@ -10,7 +10,7 @@
         } else {
             foreach ($cart as $value) :
                 $product = $value['product'];
-                $price = $product->getPrice();
+                $price = $product->realPrice();
                 $name = $product->getName();
                 $qty = $value['quantity'];
                 ?>

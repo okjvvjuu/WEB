@@ -35,9 +35,9 @@ class Cart {
         } else {
             $this->content[$product->getId()]['quantity'] += $qty;
         }
-        $this->setTotalCost($this->totalCost + $product->getPrice() * $qty);
+        $this->setTotalCost($this->totalCost + $product->realPrice() * $qty);
         if ($this->content[$product->getId()]['quantity'] <= 0) {
-            $this->totalCost -= $product->getPrice() * $this->content[$product->getId()]['quantity'];
+            $this->totalCost -= $product->realPrice() * $this->content[$product->getId()]['quantity'];
             unset($this->content[$product->getId()]);
         }
     }
@@ -74,7 +74,7 @@ class Cart {
                 if ($this->content[$id]['product']->getDate() < $date) {
                     $temp = $db->query("SELECT * FROM products WHERE id = $id LIMIT 1;")->fetch_object();
                     //Actualizar totalCost
-                    $this->setTotalCost($this->totalCost + (($temp->price - $this->content[$id]['product']->getPrice()) * $this->content[$id]['quantity']));
+                    $this->setTotalCost($this->totalCost + (($temp->price - $this->content[$id]['product']->realPrice()) * $this->content[$id]['quantity']));
                     $this->content[$id]['product'] = new Product($temp->id, $temp->name, $temp->price, $temp->date, $temp->stock, $temp->description, $temp->sale, $temp->image, $temp->category_id);
                 }
             }

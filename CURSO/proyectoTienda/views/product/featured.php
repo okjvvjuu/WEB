@@ -9,7 +9,7 @@
                     </div>
                     <figcaption>
                         <h3><?= $product->getName() ?></h3>
-                        <p><?= $product->getPrice() ?>€</p>
+                        <p><?= $product->realPrice() ?>€</p>
                         <form action="<?=baseURL?>Cart/addOne&id=<?=$product->getId()?>" method="POST">
                             <input type="submit" value="Comprar" />
                         </form>

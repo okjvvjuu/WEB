@@ -19,7 +19,7 @@ $products = $order->getOrderedProducts(-1);
     <ul class="cart">
         <?php
         foreach ($products as $product) :
-            $price = $product['product']->getPrice();
+            $price = $product['product']->realPrice();
             $name = $product['product']->getName();
             $qty = $product['quantity'];
             ?>

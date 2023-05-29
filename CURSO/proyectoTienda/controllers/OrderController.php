@@ -75,7 +75,10 @@ class OrderController {
                         $order->setId($order_id);
                         foreach ($products as $product_id => $product) {
                             $qty = $product['quantity'];
+                            $stock = $db->query("SELECT stock FROM products WHERE id = $product_id;")->fetch_object()->stock;
+                            $endStock = $stock-$qty;
                             $db->query("INSERT INTO orders_products VALUES(null,$order_id,$product_id,$qty);");
+                            $db->query("UPDATE products SET stock = $endStock WHERE id = $product_id;");
                         }
                         unset($_SESSION['cart']);
                     }

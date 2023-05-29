@@ -29,7 +29,7 @@ if (is_null($content) && !empty($_GET['id'])) {
         <h3>Artículos:</h3>
         <ol>
             <?php foreach ($content as $product): ?>
-                <li><?= $product['product']->getName() ?> x <?= $product['quantity'] ?> &rightarrow; <?= $product['product']->getPrice() * $product['quantity'] ?>€</li>
+                <li><?= $product['product']->getName() ?> x <?= $product['quantity'] ?> &rightarrow; <?= $product['product']->realPrice() * $product['quantity'] ?>€</li>
             <?php endforeach; ?>
         </ol>
         <div class="product-details_basic-info_blur"></div>
