@@ -5,12 +5,16 @@
         <group>
             <file>file:/Z:/WEB/CURSO/proyectoTienda/views/order/check.php</file>
             <file>file:/Z:/WEB/CURSO/proyectoTienda/helpers/OrderStatus.php</file>
+            <file>file:/Z:/WEB/CURSO/proyectoTienda/views/layout/background.php</file>
             <file>file:/Z:/WEB/CURSO/proyectoTienda/models/Order.php</file>
+            <file>file:/Z:/WEB/CURSO/proyectoTienda/assets/css/responsive.css</file>
             <file>file:/Z:/WEB/CURSO/proyectoTienda/models/Category.php</file>
             <file>file:/Z:/WEB/CURSO/proyectoTienda/controllers/CategoryController.php</file>
             <file>file:/Z:/WEB/CURSO/proyectoTienda/controllers/OrderController.php</file>
             <file>file:/Z:/WEB/CURSO/proyectoTienda/views/order/confirmation.php</file>
+            <file>file:/Z:/WEB/CURSO/proyectoTienda/views/layout/nav.php</file>
             <file>file:/Z:/WEB/CURSO/proyectoTienda/views/order/modify.php</file>
+            <file>file:/Z:/WEB/CURSO/proyectoTienda/assets/css/nav.css</file>
         </group>
     </open-files>
 </project-private>

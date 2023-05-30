@@ -1,0 +1,8 @@
+.navbar-brand {
+    font-family: 'Style Script';
+    font-size: xxx-large;
+}
+
+nav a:first-child {
+    padding: 0;
+}
