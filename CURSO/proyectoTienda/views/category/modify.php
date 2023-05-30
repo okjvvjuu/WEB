@@ -5,6 +5,11 @@ $category = null;
 if ($query && $query->num_rows == 1) {
     $category = $query->fetch_object();
 }
+
+if (isset($_SESSION['lstError']['category'])) {
+    require_once './views/layout/errorMessage.php';
+    unset($_SESSION['lstError']['category']);
+}
 ?>
 
 <h2>

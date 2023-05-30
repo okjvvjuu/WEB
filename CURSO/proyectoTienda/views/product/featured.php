@@ -1,4 +1,12 @@
 <h2>Productos destacados</h2>
+
+<?php
+if (isset($_SESSION['lstError']['product'])) {
+    require_once './views/layout/errorMessage.php';
+    unset($_SESSION['lstError']['product']);
+}
+?>
+
 <section class="articles">
     <?php foreach (ProductController::getFeaturedProducts(-1) as $product): ?>
         <article class="product">
@@ -9,7 +17,7 @@
                     </div>
                     <figcaption>
                         <h3><?= $product->getName() ?></h3>
-                        <p><?= $product->getPrice() ?>€</p>
+                        <p><?= $product->realPrice() ?>€</p>
                         <form action="<?=baseURL?>Cart/addOne&id=<?=$product->getId()?>" method="POST">
                             <input type="submit" value="Comprar" />
                         </form>

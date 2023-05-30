@@ -2,6 +2,12 @@
 $orderId = $_GET['id'];
 $order = (new Order($orderId))->fetch();
 $products = $order->getOrderedProducts(-1);
+
+if (isset($_SESSION['lstError']['order'])) {
+    require_once './views/layout/errorMessage.php';
+    unset($_SESSION['lstError']['order']);
+}
+
 ?>
 
 <h2>Detalles del pedido</h2>
@@ -19,7 +25,7 @@ $products = $order->getOrderedProducts(-1);
     <ul class="cart">
         <?php
         foreach ($products as $product) :
-            $price = $product['product']->getPrice();
+            $price = $product['product']->realPrice();
             $name = $product['product']->getName();
             $qty = $product['quantity'];
             ?>

@@ -13,7 +13,7 @@ class Product {
     private $image;
     private $db;
 
-    public function __construct($id = null, $name, $price, $date, $stock, $description = null, $sale = null, $image = null, $category_id = null) {
+    public function __construct($id, $name, $price, $date, $stock, $description = null, $sale = null, $image = null, $category_id = null) {
         $this->db = Database::connect();
 
         $this->id = $id;
@@ -159,4 +159,7 @@ class Product {
         return $this->image;
     }
 
+    public function realPrice() {
+        return round(($this->price) - ($this->sale/100*$this->price), 2);
+    }
 }

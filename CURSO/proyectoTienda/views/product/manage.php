@@ -1,5 +1,12 @@
 <h2>Gestionar productos</h2>
 
+<?php
+if (isset($_SESSION['lstError']['product'])) {
+    require_once './views/layout/errorMessage.php';
+    unset($_SESSION['lstError']['product']);
+}
+?>
+
 <div class="table">
     <table>
         <thead>

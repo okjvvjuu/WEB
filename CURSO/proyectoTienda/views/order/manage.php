@@ -1,6 +1,13 @@
 
 <h2>Gestionar pedidos</h2>
 
+<?php
+if (isset($_SESSION['lstError']['order'])) {
+    require_once './views/layout/errorMessage.php';
+    unset($_SESSION['lstError']['order']);
+}
+?>
+
 <div class="table">
     <table>
         <thead>

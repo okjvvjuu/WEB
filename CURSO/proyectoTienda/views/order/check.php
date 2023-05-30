@@ -13,6 +13,12 @@ $content = $cart->getContent();
 if (is_null($content) && !empty($_GET['id'])) {
     $content = (new Order($_GET['id']))->fetch()->getOrderedProducts(-1);
 }
+
+if (isset($_SESSION['lstError']['order'])) {
+    require_once './views/layout/errorMessage.php';
+    unset($_SESSION['lstError']['order']);
+}
+
 ?>
 
 <h2>Revisar pedido</h2>
@@ -29,7 +35,7 @@ if (is_null($content) && !empty($_GET['id'])) {
         <h3>Artículos:</h3>
         <ol>
             <?php foreach ($content as $product): ?>
-                <li><?= $product['product']->getName() ?> x <?= $product['quantity'] ?> &rightarrow; <?= $product['product']->getPrice() * $product['quantity'] ?>€</li>
+                <li><?= $product['product']->getName() ?> x <?= $product['quantity'] ?> &rightarrow; <?= $product['product']->realPrice() * $product['quantity'] ?>€</li>
             <?php endforeach; ?>
         </ol>
         <div class="product-details_basic-info_blur"></div>

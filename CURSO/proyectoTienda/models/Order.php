@@ -15,7 +15,7 @@ class Order {
     public static function getAllOrders($userId) {
         $db = Database::connect();
         $result = false;
-        $query = $db->query("SELECT * FROM orders WHERE user_id = $userId ORDER BY date;");
+        $query = $db->query("SELECT * FROM orders WHERE user_id = $userId ORDER BY date DESC;");
         for ($i = 0; $temp = $query->fetch_object(); $i++) {
             $result[$i] = new Order($temp->id, $temp->user_id, $temp->province, $temp->location, $temp->direction, $temp->price, $temp->status, $temp->date);
         }

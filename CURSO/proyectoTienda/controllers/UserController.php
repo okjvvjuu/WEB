@@ -41,11 +41,7 @@ class UserController
     {
         if (isset($_SESSION['user'])) {
             session_unset();
-        }
-        header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
-        header("Pragma: no-cache");
-        header("Expires: 0");
-    
+        }    
         header("Location:".baseURL);
     }
 
@@ -56,7 +52,7 @@ class UserController
             try {
                 $save = $user->save();
             } catch (Exception $e) {
-                $_SESSION['lstError']['signin'] = $e->getMessage();
+                $_SESSION['lstError']['signin'] = "Un problema con la base de datos ha impedido que se guarde el usuario, vuelva a intentarlo";
             }
         } else {
             $_SESSION['lstError']['signin'] = 'Datos inválidos';

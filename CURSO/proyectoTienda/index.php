@@ -11,7 +11,7 @@ require_once './controllers/CartController.php';
 require_once './helpers/OrderStatus.php';
 
 session_start();
-//error_reporting(E_ALL ^ E_WARNING ^ E_NOTICE);
+error_reporting(E_ALL ^ E_WARNING ^ E_NOTICE ^ E_DEPRECATED);
 
 if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = CartController::createCart();
