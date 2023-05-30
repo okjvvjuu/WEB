@@ -6,3 +6,44 @@
 
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
+
+body {
+    min-height: 100vh;
+    max-width: 98vw;
+    margin: auto;
+}
+
+.aside {
+    height: 90vh;
+}
+
+.appear-md {
+    display: none;
+}
+
+@include media-breakpoint-down(md) {
+    .aside {
+        border-top: 1px solid $secondary;
+        height: fit-content;
+        position: fixed;
+        bottom:4vh;
+    }
+    .disappear-md {
+        display: none !important;
+    }
+    .appear-md, .appear-md > h3 {
+        display: inherit !important;
+        padding: 0 !important;
+        position: relative !important;
+        text-align: center;
+        top: 0;
+        left:0;
+    }
+    .navbar-nav {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .main {
+        max-height: 1000vh;
+    }
+}
